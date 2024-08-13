@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Care Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d6a4f;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .plant-input {
+            margin-bottom: 20px;
+        }
+
+        .plant-input label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .plant-input input, .plant-input select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .care-info {
+            margin-top: 20px;
+        }
+
+        .care-info h2 {
+            margin-top: 0;
+            color: #2d6a4f;
+        }
+
+        .calendar {
+            margin-top: 20px;
+            background: #e9f5e9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .calendar h3 {
+            margin-top: 0;
+        }
+
+        .calendar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .calendar li {
+            margin-bottom: 10px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Plant Care Web App</h1>
+    <div class="container">
+        <div class="plant-input">
+            <label for="plantType">Plant Type:</label>
+            <select id="plantType">
+                <option value="">Select a plant</option>
+                <option value="cactus">Cactus</option>
+                <option value="fern">Fern</option>
+                <option value="orchid">Orchid</option>
+                <option value="succulent">Succulent</option>
+                <option value="rose">Rose</option>
+            </select>
+            <button onclick="showCareInfo()">Get Care Instructions</button>
+        </div>
+
+        <div class="care-info" id="careInfo">
+            <!-- Care instructions will be displayed here -->
+        </div>
+
+        <div class="calendar" id="calendar">
+            <h3>Watering Schedule</h3>
+            <ul id="wateringSchedule">
+                <!-- Calendar reminders will be displayed here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showCareInfo() {
+            const plantType = document.getElementById('plantType').value;
+            const careInfo = document.getElementById('careInfo');
+            const wateringSchedule = document.getElementById('wateringSchedule');
+
+            let info = '';
+            let schedule = '';
+
+            switch (plantType) {
+                case 'cactus':
+                    info = '<h2>Cactus Care Instructions</h2>' +
+                           '<p>Water every 2 weeks. Requires full sunlight.</p>';
+                    schedule = '<li>Water every 2 weeks</li>';
+                    break;
+                case 'fern':
+                    info = '<h2>Fern Care Instructions</h2>' +
+                           '<p>Water 2-3 times a week. Keep in indirect sunlight.</p>';
+                    schedule = '<li>Water every Monday, Wednesday, and Friday</li>';
+                    break;
+                case 'orchid':
+                    info = '<h2>Orchid Care Instructions</h2>' +
+                           '<p>Water once a week. Needs indirect light.</p>';
+                    schedule = '<li>Water every Saturday</li>';
+                    break;
+                case 'succulent':
+                    info = '<h2>Succulent Care Instructions</h2>' +
+                           '<p>Water once every 10 days. Needs bright sunlight.</p>';
+                    schedule = '<li>Water every 10 days</li>';
+                    break;
+                case 'rose':
+                    info = '<h2>Rose Care Instructions</h2>' +
+                           '<p>Water daily. Requires 6 hours of sunlight daily.</p>';
+                    schedule = '<li>Water every day</li>';
+                    break;
+                default:
+                    info = '<p>Please select a plant to get care instructions.</p>';
+            }
+
+            careInfo.innerHTML = info;
+            wateringSchedule.innerHTML = schedule;
+        }
+    </script>
+</body>
+</html>
